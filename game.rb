@@ -2,10 +2,10 @@ require_relative 'user_interface.rb'
 
 class Game
   include UserInterface
-  attr_accessor :game_board, :player_one, :player_two, :current_player
+  attr_accessor :board, :player_one, :player_two, :current_player
 
   def initialize
-    @game_board = GameBoard.new
+    @board = Board.new
     @player_one = nil
     @player_two = nil
     @current_player = nil
@@ -14,13 +14,13 @@ class Game
   def play
     game_setup
 
-    until game_board.full?
-      game_board.display_board
+    until board.full? || board.winner?
+      board.display_board
 
       puts player_move_prompt(current_player.name)
       player_move = gets.chomp.to_i
 
-      game_board.update_board(current_player, player_move)
+      board.update_board(current_player, player_move)
       set_turn
     end
   end

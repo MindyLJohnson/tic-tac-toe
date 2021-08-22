@@ -15,14 +15,15 @@ class Game
     game_setup
 
     until board.full? || board.winner?
+      set_turn
       board.display_board
 
       puts player_move_prompt(current_player.name)
       player_move = gets.chomp.to_i
-
       board.update_board(current_player, player_move)
-      set_turn
     end
+
+    end_game
   end
 
   def game_setup
@@ -33,7 +34,6 @@ class Game
 
     @player_one = Player.new(player_one_name, 'X')
     @player_two = Player.new(player_two_name, 'O')
-    @current_player = player_one
   end
 
   def set_turn
@@ -42,5 +42,12 @@ class Game
     else
       @current_player = player_one
     end
+  end
+
+  def end_game
+    board.display_board
+
+    puts winner_prompt(current_player.name) if board.winner?
+    puts tie_prompt if board.full? && !board.winner?
   end
 end

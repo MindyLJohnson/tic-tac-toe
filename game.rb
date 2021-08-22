@@ -20,6 +20,12 @@ class Game
 
       puts player_move_prompt(current_player.name)
       player_move = gets.chomp.to_i
+
+      until board.valid_move?(player_move)
+        puts invalid_move_prompt
+        player_move = gets.chomp.to_i
+      end
+
       board.update_board(current_player, player_move)
     end
 

@@ -7,6 +7,10 @@ module UserInterface
     "Make your move #{turn}."
   end
 
+  def invalid_move_prompt
+    "Invalid move. Please enter the number of an open square."
+  end
+
   def winner_prompt(winner)
     "Game Over! #{winner} won the game!"
   end

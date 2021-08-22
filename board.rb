@@ -25,6 +25,10 @@ class Board
     end
   end
 
+  def valid_move?(move)
+    move.between?(1, 9) && board[move-1].is_a?(Numeric)
+  end
+
   def display_board
     puts <<-HEREDOC
 

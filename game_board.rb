@@ -6,7 +6,7 @@ class GameBoard
   end
 
   def update_board(player, move)
-    game_board
+      game_board[move - 1] = player.game_piece
   end
 
   def display_board
@@ -17,7 +17,7 @@ class GameBoard
           #{game_board[3]} | #{game_board[4]} | #{game_board[5]}
          ---+---+---
           #{game_board[6]} | #{game_board[7]} | #{game_board[8]}
-          
+
     HEREDOC
   end
 end

@@ -1,10 +1,11 @@
-require_relative 'game_play.rb'
+require_relative 'game.rb'
 require_relative 'player.rb'
 require_relative 'game_board.rb'
+require_relative 'user_interface.rb'
 
-player_one = Player.new('Mindy', 'X')
-player_two =  Player.new('Pug', 'O')
+def play_game
+  game = Game.new
+  game.play
+end
 
-game_board = GameBoard.new
-game_board.update_board(player_one, 1)
-game_board.display_board
+play_game

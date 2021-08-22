@@ -9,6 +9,10 @@ class GameBoard
       game_board[move - 1] = player.game_piece
   end
 
+  def full?
+    game_board.none? {|square| square.is_a?(Numeric)}
+  end
+
   def display_board
     puts <<-HEREDOC
 
